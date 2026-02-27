@@ -4,312 +4,293 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profesionální úklidy - Přerov a Olomoucký kraj</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        :root {
-            --primary: #0ea5e9;
-            --primary-dark: #0284c7;
-            --secondary: #f0f9ff;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-            --white: #ffffff;
-            --accent: #f59e0b;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
-            background-color: var(--white);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigace */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-family: 'Nunito', sans-serif;
+            color: #2b3452;
         }
 
         /* Hero Sekce */
-        header {
-            margin-top: 80px;
-            background: linear-gradient(rgba(14, 165, 233, 0.8), rgba(2, 132, 199, 0.9)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-            color: var(--white);
-            text-align: center;
-            padding: 6rem 5% 4rem;
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1rem;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            animation: fadeInDown 1s ease-out;
-        }
-
-        header p {
-            font-size: clamp(1.2rem, 2vw, 1.5rem);
-            max-width: 800px;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.3s backwards;
-        }
-
-        .cta-btn {
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            background-color: var(--accent);
-            color: var(--white);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            animation: fadeInUp 1s ease-out 0.6s backwards;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
-        }
-
-        /* Zvýraznění */
-        .highlight-bar {
-            background-color: var(--secondary);
-            padding: 2rem 5%;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .highlight-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-        }
-
-        /* Služby */
-        .services {
-            padding: 5rem 5%;
-            background-color: var(--white);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
+        .hero {
+            background: linear-gradient(rgba(13, 110, 253, 0.75), rgba(0, 43, 105, 0.85)), 
+                        url('https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            min-height: 85vh;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
             margin-bottom: 3rem;
-            color: var(--text-dark);
         }
 
-        .section-title span {
-            color: var(--primary);
+        .hero h1 {
+            font-weight: 900;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        /* Karty Služeb */
+        .service-card {
+            border: none;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
         }
 
-        .card {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 2.5rem;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-bottom: 4px solid transparent;
-            opacity: 0;
-            transform: translateY(30px);
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #0d6efd;
+            transition: all 0.3s ease;
+            z-index: -1;
         }
 
-        .card.show {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .card:hover {
+        .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-bottom: 4px solid var(--primary);
+            box-shadow: 0 15px 40px rgba(13, 110, 253, 0.15);
         }
 
-        .card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
+        .service-card:hover::before {
+            height: 100%;
+            opacity: 0.03;
         }
 
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: rgba(13, 110, 253, 0.1);
+            color: #0d6efd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
         }
 
-        .card p {
-            color: var(--text-light);
+        .service-card:hover .icon-box {
+            background: #0d6efd;
+            color: #fff;
+            transform: scale(1.1);
         }
 
-        /* O nás / Kontakt */
-        .contact-info {
-            background-color: var(--secondary);
-            padding: 4rem 5%;
-            text-align: center;
+        /* Akcentní tlačítko */
+        .btn-accent {
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-accent:hover {
+            background-color: #ffca2c;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
         }
 
-        .contact-info p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Patička */
-        footer {
-            background-color: var(--text-dark);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Animace */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .highlight-bar { flex-direction: column; align-items: center; gap: 1rem; }
-            header { padding: 4rem 5% 3rem; }
+        /* Kontakt Sekce */
+        .contact-section {
+            background-color: #f8f9fa;
+            border-radius: 30px;
+            padding: 4rem 2rem;
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">
-            <i class="fa-solid fa-sparkles"></i>
-            ProÚklid
-        </div>
-        <div>
-            <a href="#kontakt" class="cta-btn" style="padding: 0.5rem 1.5rem; font-size: 1rem;">Kontaktujte nás</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary fs-3" href="#">
+                <i class="fa-solid fa-sparkles text-warning me-2"></i>Čisto<span class="text-dark">Hned</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold px-3" href="#sluzby">Služby</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold px-3" href="#o-nas">O nás</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-sm" href="#kontakt">
+                            <i class="fa-solid fa-phone me-2"></i>Kontakt
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <header>
-        <h1>Nebojíme se špíny,<br>špína se bojí nás.</h1>
-        <p>Uklidíme vám tak, že po 7 hodinách své bydlení nepoznáte. 😊🥰</p>
-        <a href="#sluzby" class="cta-btn">Zobrazit naši nabídku</a>
+    <header class="hero text-white d-flex align-items-center">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="zoom-in" data-aos-duration="1000">
+                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-4 fs-6 fw-bold shadow-sm">
+                        <i class="fa-solid fa-star me-1"></i> Profesionální úklidové služby
+                    </span>
+                    <h1 class="display-3 mb-4">Nebojíme se špíny,<br>špína se bojí nás.</h1>
+                    <p class="lead fs-3 mb-5 fw-light opacity-75">
+                        Uklidíme vám tak, že po 7 hodinách své bydlení nepoznáte. 😊🥰
+                    </p>
+                    <a href="#sluzby" class="btn btn-accent btn-lg px-5 py-3 rounded-pill fw-bold fs-5 shadow">
+                        Prohlédnout služby <i class="fa-solid fa-arrow-down ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <div class="highlight-bar">
-        <div class="highlight-item"><i class="fa-solid fa-map-location-dot"></i> Přerov a Olomoucký kraj</div>
-        <div class="highlight-item"><i class="fa-solid fa-school"></i> Praxe s úklidy ZŠ a MŠ Vysoká</div>
-        <div class="highlight-item"><i class="fa-solid fa-clock"></i> Rychle, precizně a s úsměvem</div>
-    </div>
-
-    <section id="sluzby" class="services">
-        <h2 class="section-title">Naše <span>Nabídka</span></h2>
-        
-        <div class="grid">
-            <div class="card">
-                <i class="fa-solid fa-broom"></i>
-                <h3>Generální a pravidelné úklidy</h3>
-                <p>Postaráme se o jednorázový velký úklid i pravidelnou údržbu vaší domácnosti, abyste měli stále čisto.</p>
+    <section class="container mb-5" id="o-nas">
+        <div class="row g-4 text-center">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="p-4 bg-white rounded-4 shadow-sm h-100 border">
+                    <i class="fa-solid fa-map-location-dot fs-1 text-primary mb-3"></i>
+                    <h4 class="fw-bold">Lokalita</h4>
+                    <p class="text-muted mb-0">Přerov a celý Olomoucký kraj.</p>
+                </div>
             </div>
-
-            <div class="card">
-                <i class="fa-solid fa-border-all"></i>
-                <h3>Mytí oken včetně rámů</h3>
-                <p>Křišťálově čistá okna bez šmouh. Důkladně vyčistíme skla i okenní rámy.</p>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="p-4 bg-white rounded-4 shadow-sm h-100 border">
+                    <i class="fa-solid fa-school fs-1 text-primary mb-3"></i>
+                    <h4 class="fw-bold">Zkušenosti</h4>
+                    <p class="text-muted mb-0">Praxe s úklidy ZŠ a MŠ Vysoká.</p>
+                </div>
             </div>
-
-            <div class="card">
-                <i class="fa-solid fa-truck-ramp-box"></i>
-                <h3>Vyklízení bytů a domů</h3>
-                <p>Zbavíme vás zbytečností. Kompletní vyklízecí služby pro byty, domy i komerční prostory.</p>
-            </div>
-
-            <div class="card">
-                <i class="fa-solid fa-couch"></i>
-                <h3>Hloubkové čištění s impregnací</h3>
-                <p>Tepování a čištění sedaček, matrací, koberců, aut a jiného čalounění. Včetně kvalitní impregnace pro delší životnost.</p>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="p-4 bg-white rounded-4 shadow-sm h-100 border">
+                    <i class="fa-solid fa-face-smile-beam fs-1 text-primary mb-3"></i>
+                    <h4 class="fw-bold">Spokojenost</h4>
+                    <p class="text-muted mb-0">Precizní výsledek a úsměv na tváři.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="kontakt" class="contact-info">
-        <h2 class="section-title">Svěřte úklid <span>profesionálům</span></h2>
-        <p>Působíme v <strong>Přerově a celém Olomouckém kraji</strong>.</p>
-        <p>Máme bohaté zkušenosti, včetně úklidů pro ZŠ a MŠ Vysoká.</p>
-        <br>
-        <button class="cta-btn" onclick="alert('Zde by byl kontaktní formulář nebo telefonní číslo: +420 123 456 789')">Zavolejte nám a domluvte si termín</button>
+    <section id="sluzby" class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5 fw-bold mb-3">Naše <span class="text-primary">Nabídka</span></h2>
+                <p class="text-muted fs-5">Kompletní péče o čistotu vašich prostor</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card service-card p-4 text-center">
+                        <div class="icon-box"><i class="fa-solid fa-broom"></i></div>
+                        <h4 class="fw-bold mb-3">Generální a pravidelné úklidy</h4>
+                        <p class="text-muted">Ať už potřebujete jednorázový velký úklid před svátky, nebo pravidelnou údržbu domácnosti, jsme tu pro vás.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card service-card p-4 text-center">
+                        <div class="icon-box"><i class="fa-solid fa-border-all"></i></div>
+                        <h4 class="fw-bold mb-3">Mytí oken včetně rámů</h4>
+                        <p class="text-muted">Křišťálově čistá skla bez jediné šmouhy. Pečlivě umyjeme nejen okna, ale i kompletní rámy a parapety.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card service-card p-4 text-center">
+                        <div class="icon-box"><i class="fa-solid fa-truck-fast"></i></div>
+                        <h4 class="fw-bold mb-3">Vyklízení bytů a domů</h4>
+                        <p class="text-muted">Potřebujete se zbavit starých věcí? Rychle a spolehlivě vyklidíme byty, domy i pozůstalosti.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card service-card p-4 text-center">
+                        <div class="icon-box"><i class="fa-solid fa-couch"></i></div>
+                        <h4 class="fw-bold mb-3">Hloubkové čištění (Tepování)</h4>
+                        <p class="text-muted mb-2">Zbavíme váš nábytek roztočů, skvrn a zápachu pomocí profesionálních extraktorů.</p>
+                        <ul class="list-unstyled text-start d-inline-block text-muted">
+                            <li><i class="fa-solid fa-check text-success me-2"></i>Sedačky a matrace</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i>Koberce a čalounění</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i>Interiéry aut</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card service-card p-4 text-center bg-primary text-white" style="border:none;">
+                        <div class="icon-box bg-white text-primary"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h4 class="fw-bold mb-3 text-white">Impregnace ZDARMA</h4>
+                        <p class="text-white-50 fs-5 mb-0 mt-3">
+                            Ke každému hloubkovému čištění čalounictví nabízíme ochranou impregnaci, která prodlouží životnost a odolnost vašeho nábytku.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Profesionální úklidy. Vytvořeno s pečlivostí pro perfektní čistotu.</p>
+    <section id="kontakt" class="container py-5 my-5">
+        <div class="contact-section shadow-lg" data-aos="zoom-in">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-4 mb-lg-0">
+                    <h2 class="display-6 fw-bold mb-3">Svěřte svůj domov <span class="text-primary">profesionálům</span></h2>
+                    <p class="fs-5 text-muted mb-4">Nechte úklid na nás a užívejte si svůj volný čas v čistém a voňavém prostředí.</p>
+                    
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle p-3 me-3">
+                            <i class="fa-solid fa-phone fs-4"></i>
+                        </div>
+                        <div>
+                            <span class="text-muted d-block">Zavolejte nám</span>
+                            <a href="#" class="fs-4 fw-bold text-dark text-decoration-none">+420 123 456 789</a>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary text-white rounded-circle p-3 me-3">
+                            <i class="fa-solid fa-envelope fs-4"></i>
+                        </div>
+                        <div>
+                            <span class="text-muted d-block">Napište nám</span>
+                            <a href="#" class="fs-5 fw-bold text-dark text-decoration-none">info@uklidy-prerov.cz</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <img src="https://images.unsplash.com/photo-1584820927498-cafe2c1c66f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Úklid" class="img-fluid rounded-4 shadow" style="border: 5px solid white;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4 text-center">
+        <div class="container">
+            <p class="mb-0 text-white-50">&copy; 2026 Profesionální úklidy Přerov. Vytvořeno pro dokonalou čistotu.</p>
+        </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // JS pro animaci prvků při skrolování (Scroll Reveal)
-        document.addEventListener("DOMContentLoaded", function() {
-            const cards = document.querySelectorAll('.card');
-
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const observer = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('show');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            cards.forEach(card => {
-                observer.observe(card);
-            });
+        // Inicializace animací při scrollování
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
         });
     </script>
 </body>
