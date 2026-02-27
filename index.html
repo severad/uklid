@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesionální úklidy - Přerov a Olomoucký kraj</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --secondary: #f0f9ff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --accent: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigace */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Hero Sekce */
+        header {
+            margin-top: 80px;
+            background: linear-gradient(rgba(14, 165, 233, 0.8), rgba(2, 132, 199, 0.9)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 5% 4rem;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header p {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            max-width: 800px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        .cta-btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            background-color: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Zvýraznění */
+        .highlight-bar {
+            background-color: var(--secondary);
+            padding: 2rem 5%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        /* Služby */
+        .services {
+            padding: 5rem 5%;
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-bottom: 4px solid transparent;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            color: var(--text-light);
+        }
+
+        /* O nás / Kontakt */
+        .contact-info {
+            background-color: var(--secondary);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Patička */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animace */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .highlight-bar { flex-direction: column; align-items: center; gap: 1rem; }
+            header { padding: 4rem 5% 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-sparkles"></i>
+            ProÚklid
+        </div>
+        <div>
+            <a href="#kontakt" class="cta-btn" style="padding: 0.5rem 1.5rem; font-size: 1rem;">Kontaktujte nás</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Nebojíme se špíny,<br>špína se bojí nás.</h1>
+        <p>Uklidíme vám tak, že po 7 hodinách své bydlení nepoznáte. 😊🥰</p>
+        <a href="#sluzby" class="cta-btn">Zobrazit naši nabídku</a>
+    </header>
+
+    <div class="highlight-bar">
+        <div class="highlight-item"><i class="fa-solid fa-map-location-dot"></i> Přerov a Olomoucký kraj</div>
+        <div class="highlight-item"><i class="fa-solid fa-school"></i> Praxe s úklidy ZŠ a MŠ Vysoká</div>
+        <div class="highlight-item"><i class="fa-solid fa-clock"></i> Rychle, precizně a s úsměvem</div>
+    </div>
+
+    <section id="sluzby" class="services">
+        <h2 class="section-title">Naše <span>Nabídka</span></h2>
+        
+        <div class="grid">
+            <div class="card">
+                <i class="fa-solid fa-broom"></i>
+                <h3>Generální a pravidelné úklidy</h3>
+                <p>Postaráme se o jednorázový velký úklid i pravidelnou údržbu vaší domácnosti, abyste měli stále čisto.</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-border-all"></i>
+                <h3>Mytí oken včetně rámů</h3>
+                <p>Křišťálově čistá okna bez šmouh. Důkladně vyčistíme skla i okenní rámy.</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-truck-ramp-box"></i>
+                <h3>Vyklízení bytů a domů</h3>
+                <p>Zbavíme vás zbytečností. Kompletní vyklízecí služby pro byty, domy i komerční prostory.</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-couch"></i>
+                <h3>Hloubkové čištění s impregnací</h3>
+                <p>Tepování a čištění sedaček, matrací, koberců, aut a jiného čalounění. Včetně kvalitní impregnace pro delší životnost.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="contact-info">
+        <h2 class="section-title">Svěřte úklid <span>profesionálům</span></h2>
+        <p>Působíme v <strong>Přerově a celém Olomouckém kraji</strong>.</p>
+        <p>Máme bohaté zkušenosti, včetně úklidů pro ZŠ a MŠ Vysoká.</p>
+        <br>
+        <button class="cta-btn" onclick="alert('Zde by byl kontaktní formulář nebo telefonní číslo: +420 123 456 789')">Zavolejte nám a domluvte si termín</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Profesionální úklidy. Vytvořeno s pečlivostí pro perfektní čistotu.</p>
+    </footer>
+
+    <script>
+        // JS pro animaci prvků při skrolování (Scroll Reveal)
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll('.card');
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
